@@ -15,7 +15,6 @@ router.get('/google',passport.authenticate('google',{
 //auth logout
 router.get('/logout',(req,res)=>{
     res.send('logging out');
-    res.send('loggingout from google')
 });
 
 //calback route for redirecting from google
