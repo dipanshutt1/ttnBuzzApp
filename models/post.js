@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
-const posstSchema=new Schema({
+const postSchema=new Schema({
     id:{
         type:String
     },
@@ -35,3 +35,6 @@ const posstSchema=new Schema({
         type: String
     }]
 })
+
+const Post=mongoose.model('post',postSchema);
+module.exports=Post;
