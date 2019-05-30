@@ -6,10 +6,12 @@ const posstSchema=new Schema({
         type:String
     },
     category:{
-        type:String
+        type:String,
+        default:'BUZZ'
     },
     date_created:{
-        type:Date
+        type:Date,
+        defaultL:Date.now()
     },
     header:{
         type:String
@@ -26,10 +28,10 @@ const posstSchema=new Schema({
     email:{
         type:String
     },
-    like:{
+    like:[{
         type:String
-    },
-    dislike:{
-        type:String
-    }
+    }],
+    dislike:[{
+        type: String
+    }]
 })
