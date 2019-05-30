@@ -9,7 +9,8 @@ const complaintSchema=new Schema({
         type:String
     },
     issue_date:{
-        type:Date
+        type:Date,
+        default:Date.now()
     },
     department:{
         type:String
