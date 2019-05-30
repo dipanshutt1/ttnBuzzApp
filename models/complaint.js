@@ -36,4 +36,7 @@ const complaintSchema=new Schema({
     email:{
         type:String
     }
-})
+});
+
+const Complaint=mongoose.model('complaint',complaintSchema);
+module.exports=Complaint;
