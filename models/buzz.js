@@ -1,33 +1,35 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
-const postSchema=new Schema({
+const buzzSchema=new Schema({
     id:{
         type:String
     },
     category:{
         type:String,
-        default:'BUZZ'
+        default:'BUZZ',
+        require:true
     },
     date_created:{
         type:Date,
-        defaultL:Date.now()
+        default:Date.now()
     },
-    header:{
-        type:String
-    },
+    // header:{
+    //     type:String
+    // },
     content:{
         type:String
     },
     image_url:{
         type:String
     },
-    name:{
-        type:String
-    },
-    email:{
-        type:String
-    },
+    // to check individual feed
+    // name:{
+    //     type:String
+    // },
+    // email:{
+    //     type:String
+    // },
     like:[{
         type:String
     }],
@@ -36,5 +38,5 @@ const postSchema=new Schema({
     }]
 })
 
-const Post=mongoose.model('post',postSchema);
-module.exports=Post;
+const Buzz=mongoose.model('buzz',buzzSchema);
+module.exports=Buzz;
