@@ -3,15 +3,20 @@ const buzzOperation=require('../services/buzzOperations');
 const Buzz=require('../models/buzz');
 const upload=require('../middleware/multer');
 const cloudinary=require('../config/cloudinary');
+const verifyToken=require('../middleware/jwtVerify');
 
-router.get('/buzz',(req,res)=>{
+router.get('/buzz',verifyToken,(req,res)=>{
     buzzOperation.findBuzz().then(data=>{
         res.send(data);
     })
-        .catch()
-})
-router.post('/buzz',upload.single('image'), async (req,res)=>{
+        .catch(err=>{
+            console.log('error',err)
+        });
+});
+
+router.post('/buzz',verifyToken,upload.single('image'), async (req,res)=>{
     var imageResult ='';
+    console.log('hi',req.body);
     if(req.file){
         await cloudinary.uploader.upload(req.file.path, function(error, result) {
             imageResult = result.secure_url;
@@ -24,8 +29,9 @@ router.post('/buzz',upload.single('image'), async (req,res)=>{
         category:req.body.category,
         imageUrl:req.file ? imageResult : ''
     })
-    buzzOperation.createBuzz(buzzData).then(res=>{
-        console.log("buzzData: ",res)
+    buzzOperation.createBuzz(buzzData).then(result=>{
+        console.log("buzzData: ",result)
+        res.send({message:"Success", result})
     }).catch(err=>{
         console.log("error: ",err);
     });
