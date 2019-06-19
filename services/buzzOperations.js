@@ -5,8 +5,8 @@ createBuzz=(buzz)=>{
     return buzz.save();
 }
 
-findBuzz=(buzz)=>{
-    return buzz.find({});
+findBuzz=()=>{
+    return buzz.find().sort({date_created:-1});
 }
 
 module.exports={
