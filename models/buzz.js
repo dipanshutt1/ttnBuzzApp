@@ -12,24 +12,20 @@ const buzzSchema=new Schema({
     },
     date_created:{
         type:Date,
-        default:Date.now()
+        default:Date.now
     },
-    // header:{
-    //     type:String
-    // },
     content:{
         type:String
     },
-    image_url:{
+    imageUrl:{
         type:String
     },
-    // to check individual feed
-    // name:{
-    //     type:String
-    // },
-    // email:{
-    //     type:String
-    // },
+    email:{
+        type:String
+    },
+    name:{
+        type:String
+    },
     like:[{
         type:String
     }],

@@ -6,14 +6,16 @@ const complaintSchema=new Schema({
         type:String
     },
     status:{
-        type:String
+        type:String,
+        default:'Pending'
     },
     issue_date:{
         type:Date,
-        default:Date.now()
+        default:Date.now
     },
     department:{
-        type:String
+        type:String,
+        default:'Admin'
     },
     issue_id:{
         type:String
@@ -21,10 +23,10 @@ const complaintSchema=new Schema({
     title:{
         type:String
     },
-    conern:{
+    concern:{
         type:String
     },
-    user:{
+    name:{
         type:String
     },
     image_url:{
@@ -38,5 +40,5 @@ const complaintSchema=new Schema({
     }
 });
 
-const Complaint=mongoose.model('complaint',complaintSchema);
+const Complaint=mongoose.model('complainx`t',complaintSchema);
 module.exports=Complaint;

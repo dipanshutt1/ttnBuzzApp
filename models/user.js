@@ -14,8 +14,12 @@ const userSchema= new Schema({
     email:{
         type:String
     },
-    role:{
-
+    userRole:{
+        type:String
+    },
+    department:{
+        type:String,
+        default: 'developers'
     }
 })
 const User=mongoose.model('user',userSchema);
