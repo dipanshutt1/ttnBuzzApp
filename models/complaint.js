@@ -35,6 +35,9 @@ const complaintSchema=new Schema({
     assigned_to:{
         type:String
     },
+    assigned_email:{
+        type: String
+    },
     email:{
         type:String
     }

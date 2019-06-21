@@ -1,7 +1,19 @@
 {
   "role": {
-    "HR": "ravi.garg@tothenew.com",
-    "IT": "deepanshu@tothenew.com",
-    "INFRASTRUCTURE": "rahul.jain1@tothenew.com"
+
+  "HR": {
+    "email": "ravi.garg@tothenew.com",
+    "name": "ravi garg"
   }
+
+,
+"IT": {
+  "email":"deepanshu@tothenew.com",
+  "name": "Deepanshu"
+},
+"INFRASTRUCTURE": {
+  "email":"rahul.jain1@tothenew.com",
+  "name": "Rahul Jain"
+}
+}
 }
