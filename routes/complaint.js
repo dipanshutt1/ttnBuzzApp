@@ -35,9 +35,11 @@ router.post('/complaint',verifyToken,upload.single('image'),async (req,res)=>{
         concern:req.body.concern,
         image_url:req.file ? imageResult : '',
         email:req.user.email,
+        name:req.user.userName,
         issue_id:id,
         status:req.body.status,
-        assigned_to: roleData.role[req.body.department]
+        assigned_to: roleData.role[req.body.department].name,
+        assigned_email: roleData.role[req.body.department].email
     });
     complaintOperation.complaintFire(complaintData).then(complaint=>{
         console.log('complaintData',complaint);
