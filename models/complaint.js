@@ -15,7 +15,7 @@ const complaintSchema=new Schema({
     },
     department:{
         type:String,
-        default:'Admin'
+        default:'IT'
     },
     issue_id:{
         type:String
