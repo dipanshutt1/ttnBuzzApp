@@ -9,6 +9,7 @@ const keys=require('./config/keys');
 const buzzRoutes=require('./routes/buzz');
 const complaintRoutes=require('./routes/complaint');
 const userProfileRoutes=require('./routes/userProfile');
+const resolveRoutes=require('./routes/resolve');
 const bodyParser=require('body-parser');
 const cors=require('cors');
 const app=express();
@@ -36,6 +37,7 @@ app.use('/profile',profileRoutes);
 app.use('/dashboard',buzzRoutes);
 app.use('/dashboard',complaintRoutes);
 app.use('/dashboard',userProfileRoutes);
+app.use('/dashboard',resolveRoutes);
 
 app.listen(8080,()=>{
     console.log('server started at port number 8080');
