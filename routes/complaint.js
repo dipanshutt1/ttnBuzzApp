@@ -18,7 +18,7 @@ router.get('/complaint',verifyToken,(req,res)=>{
 });
 
 router.post('/complaint',verifyToken,upload.single('image'),async (req,res)=>{
-    // console.log(`body: ${JSON.stringify(req.body)}`)
+    // console.log(`body: ${JSON.stringify(req.body)(req, res, next) => {multer, next()}}`)
     var imageResult='';
     const id=nanoid(6);
 
