@@ -37,6 +37,15 @@ router.post('/buzz',verifyToken,upload.single('image'), async (req,res)=>{
     });
 });
 
+// router.get('/:skip', verifyToken, (req, res) => {
+//     const skip = parseInt(req.params.skip)
+//     buzzOperation.findBuzz(skip).then(data => {
+//         res.send(data);
+//     }).catch(err => {
+//         console.log(err)
+//     });
+// });
+
 
 
 module.exports=router;
