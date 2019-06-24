@@ -10,7 +10,9 @@ const buzzRoutes=require('./routes/buzz');
 const complaintRoutes=require('./routes/complaint');
 const userProfileRoutes=require('./routes/userProfile');
 const resolveRoutes=require('./routes/resolve');
+const myComplaintRoutes=require('./routes/myComplaint');
 const bodyParser=require('body-parser');
+const allUserRoutes=require('./routes/allUser');
 const cors=require('cors');
 const app=express();
 require('./config/cloudinary');
@@ -38,6 +40,8 @@ app.use('/dashboard',buzzRoutes);
 app.use('/dashboard',complaintRoutes);
 app.use('/dashboard',userProfileRoutes);
 app.use('/dashboard',resolveRoutes);
+app.use('/dashboard/resolve',myComplaintRoutes);
+app.use('/dashboard',allUserRoutes);
 
 app.listen(8080,()=>{
     console.log('server started at port number 8080');
