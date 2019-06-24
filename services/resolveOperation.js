@@ -5,8 +5,9 @@ const findAllComplaints=()=>{
     return complaint.find().sort({'issue_date':-1})
 }
 const changeStatus=(complaintId,status)=>{
-    return complaint.update(
-        {id:complaintId},{status:status});
+    console.log(`called for status: ${status} and complaint id:${complaintId}`);
+    return complaint.updateOne(
+        {issue_id:complaintId},{status:status});
 }
 const findMyComplaint=(email)=>{
     return complaint.find({assigned_email:email}).sort({'issue_date':-1})
