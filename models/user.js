@@ -9,7 +9,8 @@ const userSchema= new Schema({
         type:String
     },
     userImg:{
-        type:String
+        type:
+        String
     },
     email:{
         type:String
@@ -19,7 +20,7 @@ const userSchema= new Schema({
     },
     department:{
         type:String,
-        default: 'developers'
+        default: 'Developer'
     }
 })
 const User=mongoose.model('user',userSchema);
