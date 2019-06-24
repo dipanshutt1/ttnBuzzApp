@@ -7,7 +7,7 @@ const complaintSchema=new Schema({
     },
     status:{
         type:String,
-        default:'Pending'
+        default:'Open'
     },
     issue_date:{
         type:Date,
