@@ -2,6 +2,7 @@ const complaint= require('../models/complaint');
 
 complaintFire=(complaint)=>{
     return complaint.save();
+
 }
 
 findComplaint=(email)=>{
