@@ -31,7 +31,13 @@ const buzzSchema=new Schema({
     }],
     dislike:[{
         type: String
-    }]
+    }],
+    posted_by:{
+        type:String
+    },
+    thumbnail:{
+        type:String
+    }
 })
 
 const Buzz=mongoose.model('buzz',buzzSchema);
