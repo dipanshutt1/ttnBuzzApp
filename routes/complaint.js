@@ -6,7 +6,9 @@ const cloudinary=require('../config/cloudinary');
 const verifyToken=require('../middleware/jwtVerify');
 const nanoid=require('nanoid');
 const roleData = require('../models/role');
-
+const nodemailer=require('nodemailer');
+const keys=require('../config/keys');
+const transporter=require('./nodemailer');
 
 router.get('/complaint',verifyToken,(req,res)=>{
     complaintOperation.findComplaint(req.user.email).then(data=>{
@@ -41,12 +43,24 @@ router.post('/complaint',verifyToken,upload.single('image'),async (req,res)=>{
         assigned_to: roleData.role[req.body.department].name,
         assigned_email: roleData.role[req.body.department].email
     });
-    complaintOperation.complaintFire(complaintData).then(complaint=>{
-        console.log('complaintData',complaint);
+    complaintOperation.complaintFire(complaintData).then(complaint=> {
+        console.log('complaintData', complaint);
         res.send({data: complaint})
+
+// setup email data with unicode symbols
+        let mailOptions = {
+            from: `${complaint.assigned_to}`, // sender address
+            to: `${complaint.assigned_email}`, // list of receivers
+            subject: `Complaint Status - TTN BUZZ`, // Subject line
+            text: `Your Complaint has been locked!`, // plain text body
+            html: '<h2>Your Complaint has been locked!</h2>' +
+                '<h3><a href="http://localhost:3000">click here</a> to check</h3>',// html body
+        };
+        transporter.sendMail(mailOptions);
+
     }).catch(err=>{
         console.log('error',err);
     });
 });
 
-module.exports=router;
+module.exports= router;

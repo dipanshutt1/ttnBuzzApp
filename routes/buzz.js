@@ -1,6 +1,7 @@
 const router=require('express').Router();
 const buzzOperation=require('../services/buzzOperations');
 const Buzz=require('../models/buzz');
+const User=require('../models/user');
 const upload=require('../middleware/multer');
 const cloudinary=require('../config/cloudinary');
 const verifyToken=require('../middleware/jwtVerify');
@@ -27,7 +28,9 @@ router.post('/buzz',verifyToken,upload.single('image'), async (req,res)=>{
     const buzzData=new Buzz({
         content:req.body.buzzContent,
         category:req.body.category,
-        imageUrl:req.file ? imageResult : ''
+        imageUrl:req.file ? imageResult : '',
+        posted_by: req.user.userName,
+        thumbnail: req.user.userImg
     })
     buzzOperation.createBuzz(buzzData).then(result=>{
         console.log("buzzData: ",result)
