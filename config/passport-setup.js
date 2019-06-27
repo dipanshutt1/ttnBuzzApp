@@ -24,13 +24,13 @@ passport.use(new GoogleStrategy({
     console.log(profile);
     var role;
     console.log("role is ",roleData.role.IT);
-    if(profile._json.email===roleData.role.HR){
+    if(profile._json.email===roleData.role.HR.email){
         role='HR'
     }
-    else if(profile._json.email===roleData.role.IT){
+    else if(profile._json.email===roleData.role.IT.email){
         role='IT'
     }
-    else if(profile._json.email===roleData.role.INFRASTRUCTURE){
+    else if(profile._json.email===roleData.role.INFRASTRUCTURE.email){
         role='INFRASTRUCTURE'
     }
     else{

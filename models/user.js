@@ -21,6 +21,10 @@ const userSchema= new Schema({
     department:{
         type:String,
         default: 'Developer'
+    },
+    status:{
+        type:String,
+        default: 'Activate'
     }
 })
 const User=mongoose.model('user',userSchema);

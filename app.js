@@ -13,6 +13,7 @@ const resolveRoutes=require('./routes/resolve');
 const myComplaintRoutes=require('./routes/myComplaint');
 const bodyParser=require('body-parser');
 const allUserRoutes=require('./routes/allUser');
+const userAccountStatus=require('./routes/userStatus');
 const cors=require('cors');
 const app=express();
 require('./config/cloudinary');
@@ -42,6 +43,7 @@ app.use('/dashboard',userProfileRoutes);
 app.use('/dashboard',resolveRoutes);
 app.use('/dashboard/resolve',myComplaintRoutes);
 app.use('/dashboard',allUserRoutes);
+app.use('/dashboard/allUser',userAccountStatus);
 
 app.listen(8080,()=>{
     console.log('server started at port number 8080');

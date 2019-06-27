@@ -7,6 +7,7 @@ const keys=require('../config/keys');
 router.get('/google',passport.authenticate('google',{
     scope:['profile','email']
 })
+    // console.log(req.user);
 );
 
 //callback route for redirecting from google

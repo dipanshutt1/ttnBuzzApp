@@ -5,8 +5,9 @@ createBuzz=(buzz)=>{
     return buzz.save();
 }
 
-findBuzz=()=>{
-    return buzz.find().sort({date_created:-1});
+findBuzz=(skipValue)=>{
+    console.log('qqq',skipValue);
+    return buzz.find().sort({date_created:-1}).limit(5).skip(skipValue);
 }
 
 module.exports={
