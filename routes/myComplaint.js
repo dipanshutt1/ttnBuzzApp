@@ -5,6 +5,7 @@ const verifyToken=require('../middleware/jwtVerify');
 const multer = require('../middleware/multer');
 const nodemailer=require('nodemailer');
 const transporter=require('./nodemailer');
+const keys=require('../config/keys');
 
 
 router.get('/myComplaint', verifyToken,(req,res)=>{
@@ -19,8 +20,8 @@ router.post('/myComplaint',multer.any(),verifyToken,(req,res)=>{
     resolveOperation.changeStatus(req.body.issue_id,req.body.statusList).then(data=>{
         console.log('data', data);
         // let mailOptions = {
-        //     from: `${Complaint.assigned_to}`, // sender address
-        //     to: `${Complaint.assigned_email}`, // list of receivers
+        //     from: keys.nodemailer.user, // sender address
+        //     to: `${Complaint.assigned_email},${Complaint.email}`,  //senders emails
         //     subject: `Complaint Status - TTN BUZZ`, // Subject line
         //     text: `Your Complaint has been changed to ${Complaint.status}!`, // plain text body
         //     html: '<h2>Your Complaint has been locked!</h2>' +
