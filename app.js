@@ -45,6 +45,7 @@ app.use('/dashboard/resolve',myComplaintRoutes);
 app.use('/dashboard',allUserRoutes);
 app.use('/dashboard/allUser',userAccountStatus);
 
+
 app.listen(8080,()=>{
     console.log('server started at port number 8080');
 });
