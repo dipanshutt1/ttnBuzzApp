@@ -46,7 +46,6 @@ router.post('/complaint',verifyToken,upload.single('image'),async (req,res)=>{
     complaintOperation.complaintFire(complaintData).then(complaint=> {
         console.log('complaintData', complaint);
         res.send({data: complaint})
-
 // setup email data with unicode symbols
         let mailOptions = {
             from: keys.nodemailer.user, // sender address
@@ -56,7 +55,7 @@ router.post('/complaint',verifyToken,upload.single('image'),async (req,res)=>{
             html: '<h2>Your Complaint has been locked!</h2>' +
                     `<h4>Department :- ${complaint.department}</h4>`+
                     `<h4>Issue ID :- ${complaint.issue_id}</h4>`+
-                    `<h4>Assigned to :- ${complaint.email}</h4>`+
+                    `<h4>Assigned to :- ${complaint.assigned_email}</h4>`+
                 '<button><a href="http://localhost:3000"></a>View Complaint</button>',// html body
         };
         transporter.sendMail(mailOptions);

@@ -18,16 +18,20 @@ router.get('/myComplaint', verifyToken,(req,res)=>{
 router.post('/myComplaint',multer.any(),verifyToken,(req,res)=>{
     console.log(`hello is hee: ${JSON.stringify(req.body)}`);
     resolveOperation.changeStatus(req.body.issue_id,req.body.statusList).then(data=>{
-        console.log('data', data);
-        // let mailOptions = {
-        //     from: keys.nodemailer.user, // sender address
-        //     to: `${Complaint.assigned_email},${Complaint.email}`,  //senders emails
-        //     subject: `Complaint Status - TTN BUZZ`, // Subject line
-        //     text: `Your Complaint has been changed to ${Complaint.status}!`, // plain text body
-        //     html: '<h2>Your Complaint has been locked!</h2>' +
-        //         '<h3><a href="http://localhost:3000">click here</a> to check</h3>',// html body
-        // };
-        // transporter.sendMail(mailOptions);
+        console.log('databdbdbdbdb', data);
+        let mailOptions = {
+            from: keys.nodemailer.user, // sender address
+            to: `${data.assigned_email},${data.email}`,  //senders emails
+            subject: `Complaint Status - TTN BUZZ`, // Subject line
+            text: `Your Complaint has been changed to ${data.status}!`, // plain text body
+            html: '<h2>Your Complaint has been changed to ${data.status}!</h2>' +
+                `<h4>Department :- ${data.department}</h4>`+
+                `<h4>Issue ID :- ${data.issue_id}</h4>`+
+                `<h4>Assigned to :- ${data.assigned_email}</h4>`+
+                '<button><a href="http://localhost:3000"></a>View Complaint</button>',// html body
+
+        };
+        transporter.sendMail(mailOptions);
         res.send(data);
 
     })
