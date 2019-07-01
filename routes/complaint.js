@@ -52,10 +52,11 @@ router.post('/complaint',verifyToken,upload.single('image'),async (req,res)=>{
             to: `${complaint.assigned_email},${complaint.email}`, // list of receivers
             subject: `Complaint Status - TTN BUZZ`, // Subject line
             text: `Your Complaint has been locked!`, // plain text body
-            html: '<h2>Your Complaint has been locked!</h2>' +
+            html: '<h2>Complaint has been locked!</h2>' +
                     `<h4>Department :- ${complaint.department}</h4>`+
                     `<h4>Issue ID :- ${complaint.issue_id}</h4>`+
-                    `<h4>Assigned to :- ${complaint.assigned_email}</h4>`+
+                    `<h4>Assigned to :- ${complaint.assigned_to}</h4>`+
+                    `<h4>Email :- ${complaint.assigned_email}</h4>`+
                 '<button><a href="http://localhost:3000"></a>View Complaint</button>',// html body
         };
         transporter.sendMail(mailOptions);
