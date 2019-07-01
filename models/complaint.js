@@ -25,10 +25,12 @@ const complaintSchema=new Schema({
         type:String
     },
     title:{
-        type:String
+        type:String,
+        required:true
     },
     concern:{
-        type:String
+        type:String,
+        required: true
     },
     name:{
         type:String

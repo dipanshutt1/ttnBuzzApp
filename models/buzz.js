@@ -1,4 +1,8 @@
 const mongoose=require('mongoose');
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 const Schema=mongoose.Schema;
 
 const buzzSchema=new Schema({
@@ -7,7 +11,7 @@ const buzzSchema=new Schema({
     },
     category:{
         type:String,
-        default:'BUZZ',
+        default:'Activity',
         require:true
     },
     date_created:{
@@ -15,7 +19,8 @@ const buzzSchema=new Schema({
         default:Date.now
     },
     content:{
-        type:String
+        type:String,
+        required:true
     },
     imageUrl:{
         type:String
@@ -27,10 +32,10 @@ const buzzSchema=new Schema({
         type:String
     },
     like:[{
-        type:String
+        emailId: {type: String}
     }],
     dislike:[{
-        type: String
+        emailId: {type: String}
     }],
     posted_by:{
         type:String
