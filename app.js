@@ -17,14 +17,12 @@ const userAccountStatus=require('./routes/userStatus');
 const cors=require('cors');
 const app=express();
 require('./config/cloudinary');
+require('dotenv').config()
+
 
 //setting up the view engine
 app.set('view engine','ejs');
 
-// app.use(cookieSession({
-//     maxAge: 24 * 60 * 60 * 1000,
-//     keys: [keys.session.cookieKey]
-// }));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors());
 // Initialize passport
