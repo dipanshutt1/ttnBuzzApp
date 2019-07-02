@@ -35,7 +35,6 @@ passport.use(new GoogleStrategy({
     }
     User.findOne({googleId: profile.id}).then((currentUser) => {
         if (currentUser) {
-            console.log('user is:', currentUser);
             done(null, currentUser);
 
         } else {
@@ -47,7 +46,6 @@ passport.use(new GoogleStrategy({
                 email: profile._json.email,
                 userRole: role,
             }).save().then((newUser) => {
-                console.log('new user created' + newUser);
                 done(null, newUser);
             })
         }
