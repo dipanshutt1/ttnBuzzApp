@@ -6,11 +6,9 @@ createBuzz = (buzz) => {
 }
 
 findBuzz = (skipValue) => {
-    console.log('qqq', skipValue);
     return buzz.find().sort({date_created: -1}).limit(5).skip(skipValue);
 }
 fetchBuzzById = id => {
-    console.log(`ID: ${id}`)
     return buzz.findOne({_id: id});
 }
 
@@ -57,7 +55,6 @@ likeBuzz = (id, email, status) => {
 
 dislikeBuzz = (id, email, status) => {
     if (status) {
-        console.log("status in IF", status)
         return buzz.findOneAndUpdate(
             {_id: id},
             {
@@ -73,7 +70,6 @@ dislikeBuzz = (id, email, status) => {
             }
         )
     } else {
-        console.log("status in ELSE", status);
         return buzz.findOneAndUpdate(
             {_id: id},
             {
