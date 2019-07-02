@@ -5,7 +5,6 @@ const keys=require('../config/keys');
 
 const storage=multer.diskStorage({});
 const maxFileSize=(3*1024*1024);
-console.log('maxfile size is:',maxFileSize);
 
 const limitFileType=(req,file,cb)=>{
     const ext=path.extname(file.originalname).toLowerCase();
