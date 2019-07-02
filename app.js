@@ -17,11 +17,8 @@ const userAccountStatus=require('./routes/userStatus');
 const cors=require('cors');
 const app=express();
 require('./config/cloudinary');
-require('dotenv').config()
+require('dotenv').config();
 
-
-//setting up the view engine
-app.set('view engine','ejs');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors());
@@ -44,6 +41,4 @@ app.use('/dashboard',allUserRoutes);
 app.use('/dashboard/allUser',userAccountStatus);
 
 
-app.listen(8080,()=>{
-    console.log('server started at port number 8080');
-});
+app.listen(keys.port);
