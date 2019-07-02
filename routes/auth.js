@@ -7,7 +7,6 @@ const keys = require('../config/keys');
 router.get('/google', passport.authenticate('google', {
         scope: ['profile', 'email']
     })
-    // console.log(req.user);
 );
 
 //callback route for redirecting from google
@@ -21,16 +20,13 @@ router.get('/google/redirect', passport.authenticate('google', {
         jwt.sign(req.user.toJSON(), keys.session.cookieKey, {expiresIn: '10h'},
             function (err, token) {
                 if (err) {
-                    console.log('err: ${err}');
                 } else {
-                    console.log(`token:${token}`);
                     res.redirect(`http://localhost:3000/token?q=${token}`);
                 }
 
             });
     }
 
-    // res.redirect('/profile/');
 })
 
 module.exports = router;

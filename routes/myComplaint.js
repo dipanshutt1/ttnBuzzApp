@@ -9,16 +9,13 @@ const keys=require('../config/keys');
 
 
 router.get('/myComplaint', verifyToken,(req,res)=>{
-    console.log(`hello ${req.user.email}`);
     resolveOperation.findMyComplaint(req.user.email).then(data=>{
         res.send(data);
     })
 })
 
 router.post('/myComplaint',multer.any(),verifyToken,(req,res)=>{
-    console.log(`hello is hee: ${JSON.stringify(req.body)}`);
     resolveOperation.changeStatus(req.body.issue_id,req.body.statusList).then(data=>{
-        console.log('databdbdbdbdb', data);
         let mailOptions = {
             from: keys.nodemailer.user, // sender address
             to: `${data.assigned_email},${data.email}`,  //senders emails

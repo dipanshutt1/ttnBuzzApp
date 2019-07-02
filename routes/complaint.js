@@ -15,22 +15,18 @@ router.get('/complaint',verifyToken,(req,res)=>{
         res.send(data);
     })
         .catch(err=>{
-        console.log('error',err)
     })
 });
 
 router.post('/complaint',verifyToken,upload.single('image'),async (req,res)=>{
-    // console.log(`body: ${JSON.stringify(req.body)(req, res, next) => {multer, next()}}`)
     var imageResult='';
     const id=nanoid(6);
 
     if(req.file){
         await cloudinary.uploader.upload(req.file.path,function (error,result) {
             imageResult=result.secure_url;
-            console.log('imageResult',imageResult)
         });
     }
-    console.log(`helllo role: ${roleData.role[req.body.department]} ${req.body.department}`)
     const complaintData=new Complaint({
         department:req.body.department,
         title:req.body.title,
@@ -44,7 +40,6 @@ router.post('/complaint',verifyToken,upload.single('image'),async (req,res)=>{
         assigned_email: roleData.role[req.body.department].email
     });
     complaintOperation.complaintFire(complaintData).then(complaint=> {
-        console.log('complaintData', complaint);
         res.send({data: complaint})
 // setup email data with unicode symbols
         let mailOptions = {

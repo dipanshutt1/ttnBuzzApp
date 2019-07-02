@@ -8,7 +8,6 @@ router.get('/allUser',verifyToken,(req,res)=>{
         res.send(data);
     })
         .catch((err)=>{
-            console.log(err);
         });
 })
 
